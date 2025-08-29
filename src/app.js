@@ -1,3 +1,4 @@
+// JSON inicial das jogadoras
 let jogadoras = [
   {
     "nome": "Andressa Alves",
@@ -50,3 +51,8 @@ let jogadoras = [
     "favorita": false
   }
 ];
+
+function saveJogadoras() {
+    localStorage.setItem("jogadoras", JSON.stringify(jogadoras));
+};
+saveJogadoras();
