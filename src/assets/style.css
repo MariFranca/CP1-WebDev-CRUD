@@ -1,0 +1,130 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+} 
+
+body {
+    background: #9BBEC8;
+    line-height: 1.5;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background:#164863;
+    color: white;
+    padding: 40px;
+    gap: 25px;
+}
+
+.titulo-header {
+    font-size: 2.5rem;
+}
+
+
+.titulo-do-cadastro {
+    font-size: 2rem;
+    color: #164863;
+}
+
+#form-section {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.form-jogadora {
+    display: flex;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    width: 550px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.form-jogadora input, 
+.form-jogadora button {
+    padding: 15px;
+    border-radius: 7px;
+    border: 0.5px solid #9BBEC8;
+    font-size: 1.5rem;
+}
+
+.form-jogadora button {
+    background: #164863;
+    color: #DDF2FD;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.form-jogadora button:hover {
+    background: #427D9D;
+}
+
+#cards {
+    padding: 30px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.titulo-cards {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #164863;
+}
+
+.cards-jogadora {
+    background: white;
+    border-radius: 11px;
+    padding: 25px;
+    max-width: 400px;
+    margin: 15px auto;
+    text-align: center;
+}
+
+.foto-jogadora {
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 3px solid #164863;
+}
+
+.cards-jogadora h3,
+.cards-jogadora p {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    color: #333;
+    margin: 8px 0;
+    font-size: 1.3rem;
+}
+
+.botoes {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+button {
+    border: none;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: #DDF2FD;
+    background-color: #427D9D;
+}
+
+button:hover {
+    background: #164863;
+}
