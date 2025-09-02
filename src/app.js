@@ -82,18 +82,18 @@ function addJogadora(event){
   const clube = document.getElementById("clube").value;
   const posicao = document.getElementById("posicao").value;
   const gols = parseInt(document.getElementById("gols").value);
-  const assistencias = parseInt(document.getElementById("Assistencia").value);
+  const assistencias = parseInt(document.getElementById("assistencia").value);
   const jogos = parseInt(document.getElementById("jogos").value);
 
   const novaJogadora = {
-  foto,
-  nome,
-  clube,
-  posicao,
-  gols,
-  assistencias,
-  jogos,
-  favorita: false
+    foto,
+    nome,
+    clube,
+    posicao,
+    gols,
+    assistencias,
+    jogos,
+    favorita: false
   };
 
   jogadoras.push(novaJogadora);
