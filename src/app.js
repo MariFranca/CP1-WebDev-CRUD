@@ -4,7 +4,7 @@ let jogadoras = [
     "nome": "Andressa Alves",
     "posicao": "Meio-campo",
     "clube": "Corinthians",
-    "foto": "https://example.com/andressa.jpg",
+    "foto": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT78PYJNlhwz0swQJZgsI1aJfGdPQA7tfVhCA&s",
     "gols": 15,
     "assistencias": 10,
     "jogos": 28,
@@ -67,8 +67,8 @@ function saveJogadoras() {
 
 function carregarJogadoras() {
     const storedJogadoras = localStorage.getItem("jogadoras"); //Aqui ele tenta buscar dados salvos na chave "jogadoras".
-    if (storedJogadoras) { //Aqui verificamos se existe algo salvo nesta chave, se se não existir ele não vai fazer nada e evita erros.
-        jogadoras = JSON.parse(storedJogadoras); //Aqui transformamos as strings do locaStorage em arrays de objetos. 
+    if (storedJogadoras) { //Verifico se existe algo salvo nesta chave, se se não existir ele não vai fazer nada e evita erros.
+        jogadoras = JSON.parse(storedJogadoras); //Aqui transformo as strings do locaStorage em arrays de objetos. 
     }
 }
 
@@ -110,6 +110,10 @@ function addJogadora(event){
 function exibirJogadoras(lista) {
   const cardsContainer = document.getElementById("cards");
   
+  if (!cardsContainer.querySelector(".titulo-cards")) {
+    cardsContainer.innerHTML = `<h2 class="titulo-cards">Jogadoras já cadastradas:</h2>`;
+  }
+
   cardsContainer.innerHTML = `
     <h2 class="titulo-cards"> Jogadoras já cadastradas: </h2>
   `;
@@ -119,20 +123,65 @@ function exibirJogadoras(lista) {
     card.classList.add("cards-jogadora"); //Adiciona a classe cards-jogadoras
 
     card.innerHTML = `
-      <img class="foto-jogadora" src="${jogadora.foto}" alt="${jogadora.nome}">
+      <img class="foto-jogadora" src="${jogadora.foto}" alt="${jogadora.nome}"> 
       <h3>Nome da jogadora: ${jogadora.nome}</h3>
       <p><strong>Clube: </strong> ${jogadora.clube}</p>
       <p><strong>Posição: </strong> ${jogadora.posicao}</p>
       <p><strong>Gols: </strong> ${jogadora.gols}</p>
-      <p><strong>Assistências: </strong> ${jogadora.assistencia}</p>
+      <p><strong>Assistências: </strong> ${jogadora.assistencias}</p>
       <p><strong>Jogos: </strong> ${jogadora.jogos}</p>
       <div class="botoes">
-          <button class="editar">Editar</button>
-          <button class="excluir">Excluir</button>
-          <button class="favoritar">${jogadora.favorita ? "★" : "☆"}</button> 
+          <button onclick="editJogadora(${index})">Editar</button> 
+          <button onclick="deleteJogadora(${index})">Excluir</button>
+          <button class="favoritar" onclick="favJogadoras(${index})">${jogadora.favorita ? "★" : "☆"}</button>
       </div>
-    `;   //Se a estrela favoritada for true exibir a estrela cheia, se não exibir a estrela vazia 
+    `;  //Se a estrela favoritada for true exibir a estrela cheia, se não exibir a estrela vazia 
+        //Para que os botões funcionem corretamente precisamos adicionar o onclick 
     cardsContainer.appendChild(card); //Cada card é adicionado ao elemento 
   });
 }
 exibirJogadoras(jogadoras);
+
+//UPDATE
+function editJogadora(index) {
+  const jogadora = jogadoras[index];
+
+  const novoNome = prompt("Nome:", jogadora.nome);
+  const novoClube = prompt("Clube:", jogadora.clube); 
+  const novaPosicao = prompt("Posição:", jogadora.posicao);
+  const novaFoto = prompt("URL da foto:", jogadora.foto);
+  const novosGols = parseInt(prompt("Gols:", jogadora.gols));
+  const novasAssistencias = parseInt(prompt("Assistências:", jogadora.assistencias));
+  const novosJogos = parseInt(prompt("Jogos:", jogadora.jogos));
+
+  //Para que realmente funcione temos que atualizar os daados 
+  jogadora.nome = novoNome || jogadora.nome;  //Aqui atualizamos cada dado e onde verificamos se os valores adicionados são validos, se não mantemos os mesmos
+  jogadora.clube = novoClube || jogadora.clube;
+  jogadora.posicao = novaPosicao || jogadora.posicao;
+  jogadora.foto = novaFoto || jogadora.foto;
+  jogadora.gols = isNaN(novosGols) ? jogadora.gols : novosGols; //adicionamos o isNaN nos números para caso seja digitado algo invalido não correr o risco de quebrar 
+  jogadora.assistencias = isNaN(novasAssistencias) ? jogadora.assistencias : novasAssistencias;
+  jogadora.jogos = isNaN(novosJogos) ? jogadora.jogos : novosJogos;
+
+  saveJogadoras(); 
+  exibirJogadoras(jogadoras);
+  alert("Jogadora editada com sucesso!"); 
+}
+
+//DELETE
+function deleteJogadora(index) {
+  if (confirm(`Deseja realmente excluir ${jogadoras[index].nome}?`)) {
+    jogadoras.splice(index, 1); //com isso removemos 1 elemento na posição index
+    saveJogadoras(); 
+    exibirJogadoras(jogadoras); 
+    alert("Jogadora excluída com sucesso!");
+  }
+}
+
+//Favoritando as jogadoras 
+function favJogadoras(index) {
+  const jogadora = jogadoras[index]; //pegamos a jogadora que foi clicada pelu usuario 
+  jogadora.favorita = !jogadora.favorita; //invertemos o valor do atributo 'favorita' (!jogadora.favorita inverte os valores)
+  saveJogadoras();
+  exibirJogadoras(jogadoras);
+}
