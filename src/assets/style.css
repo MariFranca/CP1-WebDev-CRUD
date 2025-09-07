@@ -1,0 +1,165 @@
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+} 
+
+body {
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    min-height: 100vh;
+    height: auto;
+    margin: 0;
+    background: linear-gradient(
+    135deg,
+    #7aa7c2, 
+    #4d6a99
+    );
+}
+
+header {
+    display: grid;
+    place-items: center;
+    background:#164863;
+    color: white;
+    padding: 40px;
+    gap: 25px;
+    margin: 0;
+    background: linear-gradient(
+    #427d9d,
+    #164863
+    );
+    background-size: 800% 800%;
+    animation: gradientMove 10s ease infinite;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 3rem;
+}
+
+.titulo-header {
+    font-size: 2.5rem;
+    background-size: 800% 800%;
+    animation: gradientMove 10s ease infinite;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 3rem;
+}
+
+#form-section {
+    display: grid;
+    place-items: center; 
+    margin: 30px 0;
+}
+
+.form-jogadora {
+    display: grid;
+    gap: 12px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    width: 800px;
+}
+
+.form-jogadora input, 
+.form-jogadora button {
+    padding: 15px;
+    border-radius: 7px;
+    border: 0.5px solid #9BBEC8;
+    font-size: 1.5rem;
+}
+
+.form-jogadora button {
+    background: #164863;
+    color: #DDF2FD;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.form-jogadora button:hover {
+    background: #427D9D;
+}
+
+#cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    max-width: 1100px;
+    width: 100%;
+    margin: auto;
+    padding: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+#cards .titulo-cards {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    grid-column: 1 / -1; 
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    color: #ffffff;
+}
+
+.cards-jogadora {
+    display: grid;
+    gap: 10px;
+    background: white;
+    border-radius: 11px;
+    padding: 25px;
+    text-align: center;
+}
+
+.foto-jogadora {
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+    margin: 0 auto 10px auto;
+    border: 3px solid #164863;
+}
+
+.cards-jogadora h3,
+.cards-jogadora p {
+    text-align: left;
+    margin: 8px 0;
+    font-size: 1.3rem;
+    color: #333;
+}
+
+.botoes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 15px;
+}
+
+button {
+    border: none;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: #DDF2FD;
+    background-color: #427D9D;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #164863;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Jogadoras</title>
+    <link rel="stylesheet" href="src/assets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+            <h1 class="titulo-header"> Gerenciamento de Jogadoras</h1>
+    </header>
+
+    <section id="form-section" >
+        <form class="form-jogadora">
+            <h2 class="titulo-do-cadastro">Faça seu cadastro aqui: </h2>
+            <input type="url" id="foto" placeholder="Insira a URL da sua foto" required>
+            <input type="text" id="nome" placeholder="Nome" required>
+            <input type="text" id="clube" placeholder="Clube" required>
+            <input type="text" id="posicao" placeholder="Posição" required>
+            <input type="number" id="gols" placeholder="Gols" required>
+            <input type="number" id="assistencia" placeholder="Assistências" required>
+            <input type="number" id="jogos" placeholder="Jogos" required>
+            <button type="submit" id="adicionar-jogadora">Adicionar jogadora</button>
+        </form>
+    </section>
+
+    <section id="cards"> 
+        <h2 class="titulo-cards"> Jogadoras já cadastradas: </h2>
+        <div class="cards-jogadora">
+            <img class="foto-jogadora" src="" alt="">
+            <h3>Nome da jogadora: </h3>
+            <p><strong>Clube: </strong></p>
+            <p><strong>Posição: </strong></p>
+            <p><strong>Gols: </strong></p>
+            <p><strong>Assistencia: </strong></p>
+            <p><strong>Jogos: </strong></p>
+            <div class="botoes">
+                <button class="editar">Editar</button>
+                <button class="excluir">Excluir</button>
+                <button class="favoritar">☆</button>
+            </div>
+        </div>
+    </section>
+    
+    <script src="./src/app.js"></script>
+</body>
+</html>
