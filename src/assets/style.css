@@ -1,3 +1,15 @@
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,45 +18,59 @@
 } 
 
 body {
-    background: #9BBEC8;
-    line-height: 1.5;
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    min-height: 100vh;
+    height: auto;
+    margin: 0;
+    background: linear-gradient(
+    135deg,
+    #7aa7c2, 
+    #4d6a99
+    );
 }
 
 header {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    display: grid;
+    place-items: center;
     background:#164863;
     color: white;
     padding: 40px;
     gap: 25px;
+    margin: 0;
+    background: linear-gradient(
+    #427d9d,
+    #164863
+    );
+    background-size: 800% 800%;
+    animation: gradientMove 10s ease infinite;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 3rem;
 }
 
 .titulo-header {
     font-size: 2.5rem;
-}
-
-
-.titulo-do-cadastro {
-    font-size: 2rem;
-    color: #164863;
+    background-size: 800% 800%;
+    animation: gradientMove 10s ease infinite;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 3rem;
 }
 
 #form-section {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    place-items: center; 
     margin: 30px 0;
 }
 
 .form-jogadora {
-    display: flex;
+    display: grid;
+    gap: 12px;
     background: white;
     padding: 20px;
     border-radius: 12px;
-    width: 550px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    width: 800px;
 }
 
 .form-jogadora input, 
@@ -69,24 +95,33 @@ header {
 }
 
 #cards {
-    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
     max-width: 1100px;
+    width: 100%;
     margin: auto;
+    padding: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
 }
 
-.titulo-cards {
-    font-size: 2rem;
+#cards .titulo-cards {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    grid-column: 1 / -1; 
     text-align: center;
     margin-bottom: 30px;
-    color: #164863;
+    font-size: 2.5rem;
+    color: #ffffff;
 }
 
 .cards-jogadora {
+    display: grid;
+    gap: 10px;
     background: white;
     border-radius: 11px;
     padding: 25px;
-    max-width: 400px;
-    margin: 15px auto;
     text-align: center;
 }
 
@@ -94,23 +129,22 @@ header {
     width: 200px;
     height: 250px;
     object-fit: cover;
-    margin-bottom: 10px;
+    margin: 0 auto 10px auto;
     border: 3px solid #164863;
 }
 
 .cards-jogadora h3,
 .cards-jogadora p {
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 10px;
-    color: #333;
+    text-align: left;
     margin: 8px 0;
     font-size: 1.3rem;
+    color: #333;
 }
 
 .botoes {
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
     margin-top: 15px;
 }
 
@@ -123,6 +157,7 @@ button {
     cursor: pointer;
     color: #DDF2FD;
     background-color: #427D9D;
+    transition: 0.3s;
 }
 
 button:hover {
