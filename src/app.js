@@ -98,6 +98,7 @@ function addJogadora(event){
   document.querySelector(".form-jogadora").reset(); 
   exibirJogadoras(jogadoras); 
 
+  alert("Jogadora adicionada com sucesso!");
 }
 
 function exibirJogadoras(lista) {
