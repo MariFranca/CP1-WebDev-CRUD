@@ -1,4 +1,3 @@
-// JSON inicial das jogadoras
 let jogadoras = [
   {
     "nome": "Andressa Alves",
@@ -52,31 +51,26 @@ let jogadoras = [
   }
 ];
 
-//Inicialização
-window.onload = function() { // este código ira rodar quando a página termina de carregar 
-    carregarJogadoras();         // recupera jogadoras salvas no navegador
-    exibirJogadoras(jogadoras);  // exibe elas na tela
+window.onload = function() { 
+    carregarJogadoras();         
+    exibirJogadoras(jogadoras); 
+    document.querySelector(".form-jogadora").addEventListener("submit", addJogadora); 
+}
 
-    document.querySelector(".form-jogadora").addEventListener("submit", addJogadora); //Irá fazer com que um novo post seja adicionado
-};
-
-//Salvando no localStorage
 function saveJogadoras() {
     localStorage.setItem("jogadoras", JSON.stringify (jogadoras)); 
 }
 
 function carregarJogadoras() {
-    const storedJogadoras = localStorage.getItem("jogadoras"); //Aqui ele tenta buscar dados salvos na chave "jogadoras".
-    if (storedJogadoras) { //Verifico se existe algo salvo nesta chave, se se não existir ele não vai fazer nada e evita erros.
-        jogadoras = JSON.parse(storedJogadoras); //Aqui transformo as strings do locaStorage em arrays de objetos. 
+    const storedJogadoras = localStorage.getItem("jogadoras"); 
+    if (storedJogadoras) { 
+        jogadoras = JSON.parse(storedJogadoras); 
     }
 }
 
-//CREATE 
 function addJogadora(event){
-  event.preventDefault(); //Serve para impedir o comportamento padrão do formulário (que é carregar a página) Assim conseguimos manipular os dados sem perder o que já está na tela.
+  event.preventDefault();
 
-  //Com esses códigos nós pegamos os valores que estão no formulario  
   const foto = document.getElementById("foto").value;
   const nome = document.getElementById("nome").value;
   const clube = document.getElementById("clube").value;
@@ -101,12 +95,11 @@ function addJogadora(event){
 
   localStorage.setItem("jogadoras", JSON.stringify(jogadoras));
 
-  document.querySelector(".form-jogadora").reset(); //Limpamos o formulário para que seja possivel adicionar novas jogadoras
-  exibirJogadoras(jogadoras); //Aqui nós atualizamos os cards na tela
+  document.querySelector(".form-jogadora").reset(); 
+  exibirJogadoras(jogadoras); 
 
 }
 
-// READ
 function exibirJogadoras(lista) {
   const cardsContainer = document.getElementById("cards");
   
@@ -118,9 +111,9 @@ function exibirJogadoras(lista) {
     <h2 class="titulo-cards"> Jogadoras já cadastradas: </h2>
   `;
 
-  lista.forEach((jogadora, index) => { //forEach: percorre cada jogadora do array. index: é a posição da jogadora dentro do array
-    const card = document.createElement("div"); //Cria um novo elemento <div> dentro do HTML
-    card.classList.add("cards-jogadora"); //Adiciona a classe cards-jogadoras
+  lista.forEach((jogadora, index) => { 
+    const card = document.createElement("div"); 
+    card.classList.add("cards-jogadora"); 
 
     card.innerHTML = `
       <img class="foto-jogadora" src="${jogadora.foto}" alt="${jogadora.nome}"> 
@@ -135,14 +128,13 @@ function exibirJogadoras(lista) {
           <button onclick="deleteJogadora(${index})">Excluir</button>
           <button class="favoritar" onclick="favJogadoras(${index})">${jogadora.favorita ? "★" : "☆"}</button>
       </div>
-    `;  //Se a estrela favoritada for true exibir a estrela cheia, se não exibir a estrela vazia 
-        //Para que os botões funcionem corretamente precisamos adicionar o onclick 
-    cardsContainer.appendChild(card); //Cada card é adicionado ao elemento 
+    `;  
+
+    cardsContainer.appendChild(card); 
   });
 }
 exibirJogadoras(jogadoras);
 
-//UPDATE
 function editJogadora(index) {
   const jogadora = jogadoras[index];
 
@@ -154,12 +146,12 @@ function editJogadora(index) {
   const novasAssistencias = parseInt(prompt("Assistências:", jogadora.assistencias));
   const novosJogos = parseInt(prompt("Jogos:", jogadora.jogos));
 
-  //Para que realmente funcione temos que atualizar os daados 
-  jogadora.nome = novoNome || jogadora.nome;  //Aqui atualizamos cada dado e onde verificamos se os valores adicionados são validos, se não mantemos os mesmos
+  
+  jogadora.nome = novoNome || jogadora.nome;  
   jogadora.clube = novoClube || jogadora.clube;
   jogadora.posicao = novaPosicao || jogadora.posicao;
   jogadora.foto = novaFoto || jogadora.foto;
-  jogadora.gols = isNaN(novosGols) ? jogadora.gols : novosGols; //adicionamos o isNaN nos números para caso seja digitado algo invalido não correr o risco de quebrar 
+  jogadora.gols = isNaN(novosGols) ? jogadora.gols : novosGols; 
   jogadora.assistencias = isNaN(novasAssistencias) ? jogadora.assistencias : novasAssistencias;
   jogadora.jogos = isNaN(novosJogos) ? jogadora.jogos : novosJogos;
 
@@ -168,20 +160,20 @@ function editJogadora(index) {
   alert("Jogadora editada com sucesso!"); 
 }
 
-//DELETE
+
 function deleteJogadora(index) {
   if (confirm(`Deseja realmente excluir ${jogadoras[index].nome}?`)) {
-    jogadoras.splice(index, 1); //com isso removemos 1 elemento na posição index
+    jogadoras.splice(index, 1); 
     saveJogadoras(); 
     exibirJogadoras(jogadoras); 
     alert("Jogadora excluída com sucesso!");
   }
 }
 
-//Favoritando as jogadoras 
+
 function favJogadoras(index) {
-  const jogadora = jogadoras[index]; //pegamos a jogadora que foi clicada pelu usuario 
-  jogadora.favorita = !jogadora.favorita; //invertemos o valor do atributo 'favorita' (!jogadora.favorita inverte os valores)
+  const jogadora = jogadoras[index]; 
+  jogadora.favorita = !jogadora.favorita; 
   saveJogadoras();
   exibirJogadoras(jogadoras);
 }
