@@ -1,13 +1,16 @@
 # 🏆 CRUD de Jogadoras
 
-## 💡 Sobre o projetp
+## 💡 Sobre o projeto
 Este projeto é um **CRUD (Create, Read, Update, Delete)** desenvolvido para gerenciar informações de jogadoras de futebol. Ele permite cadastrar, visualizar, editar, excluir e favoritar jogadoras de forma simples e intuitiva. 
+
+### 🌐 Acesse o projeto online: [CRUD de Jogadoras](https://marifranca.github.io/CP4-WebDev-CRUD/)
 
 ## 🚀 Funcionalidades
 - ➕ **Adicionar jogadora** com nome, clube, posição, gols, assistências, jogos e foto  
 - 📋 **Listar todas as jogadoras** já cadastradas  
 - ✏️ **Editar informações** de uma jogadora existente  
 - ❌ **Remover jogadora** do cadastro  
+- 📱 **Responsivo**: o site se adapta a diferentes tamanhos de tela, funcionando bem em desktop, tablet e celular
 - ⚡ Interface simples e fácil de usar
 
 ## 🎯 Objetivo
@@ -23,3 +26,4 @@ O objetivo deste projeto é praticar conceitos de **desenvolvimento web** e **ma
 ## Projeto realizado por:
 | [<img loading="lazy" src="https://github.com/MariFranca.png" width=115><br><sub>Mariana Franca</sub>](https://github.com/MariFranca) | 
 | :----: |
+
