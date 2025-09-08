@@ -93,8 +93,6 @@ function addJogadora(event){
   jogadoras.push(novaJogadora);
   saveJogadoras();
 
-  localStorage.setItem("jogadoras", JSON.stringify(jogadoras));
-
   document.querySelector(".form-jogadora").reset(); 
   exibirJogadoras(jogadoras); 
 
